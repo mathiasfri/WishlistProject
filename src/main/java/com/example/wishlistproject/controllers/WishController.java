@@ -1,6 +1,7 @@
 package com.example.wishlistproject.controllers;
 
 import com.example.wishlistproject.models.User;
+import com.example.wishlistproject.models.Wish;
 import com.example.wishlistproject.repositories.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,5 +29,16 @@ public class WishController {
         return "";
     }
 
+    @GetMapping("/create")
+    public String createWish(Model model) {
+        Wish wish = new Wish();
+        model.addAttribute("wish", wish);
+        return "";
+    }
+    @PostMapping("/addUser")
+    public String addWish(@ModelAttribute Wish wish) {
+        repository.createWish(wish);
+        return "";
+    }
 }
 
