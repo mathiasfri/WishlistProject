@@ -6,7 +6,17 @@ public class Wish {
     private String picture;
     private String description;
     private String url;
-    private int userID;
+    private int userId;
+
+    public Wish(){}
+    public Wish(int wishId, String title, String picture, String description, String url, int userId) {
+        this.wishId = wishId;
+        this.title = title;
+        this.picture = picture;
+        this.description = description;
+        this.url = url;
+        this.userId = userId;
+    }
 
     public int getWishId() {
         return wishId;
@@ -49,11 +59,11 @@ public class Wish {
     }
 
     public int getUserID() {
-        return userID;
+        return userId;
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userId = userID;
     }
 }
 

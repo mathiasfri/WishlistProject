@@ -10,6 +10,13 @@ public class ViewUserWishDTO {
     private String lastName;
     private List<Wish> wishList;
 
+    public ViewUserWishDTO(int userID, String firstName, String lastName, List<Wish> wishList) {
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.wishList = wishList;
+    }
+
     public int getUserID() {
         return userID;
     }
@@ -42,10 +49,4 @@ public class ViewUserWishDTO {
         this.wishList = wishList;
     }
 
-    public ViewUserWishDTO(int userID, String firstName, String lastName, List<Wish> wishList) {
-        this.userID = userID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.wishList = wishList;
-    }
 }
