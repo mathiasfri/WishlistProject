@@ -1,19 +1,19 @@
-package com.example.wishlistproject;
+package com.example.wishlistproject.Models;
 
 public class Wish {
-    private int id;
+    private int wishId;
     private String title;
+    private String picture;
     private String description;
     private String url;
-    private String picture;
-    private int userId;
+    private int userID;
 
-    public int getId() {
-        return id;
+    public int getWishId() {
+        return wishId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setWishId(int wishId) {
+        this.wishId = wishId;
     }
 
     public String getTitle() {
@@ -22,6 +22,14 @@ public class Wish {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getDescription() {
@@ -40,19 +48,12 @@ public class Wish {
         this.url = url;
     }
 
-    public String getPicture() {
-        return picture;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }
+
