@@ -41,7 +41,7 @@ public class WishController {
     @PostMapping("/addwish")
     public String addWish(@ModelAttribute Wish wish) {
         repository.createWish(wish);
-        return "redirect:/";
+        return "redirect:/createwish";
     }
 
     @PostMapping("/createwish")
