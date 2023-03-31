@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link th:href="@{/addstyle.css}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Create Wish</title>
+</head>
+<body>
+
+<h1>My Wishlist</h1>
+
+<table>
+  <tr>
+    <th>Wish ID</th>
+    <th>Title</th>
+    <th>Picture</th>
+    <th>Description</th>
+    <th>URL</th>
+    <th>User ID</th>
+  </tr>
+  <tr th:each="wish : ${wishes}">
+    <td th:text="${wish.getWishId()}"></td>
+    <td th:text="${wish.getTitle()}"></td>
+    <td th:text="${wish.getPicture()}"></td>
+    <td th:text="${wish.getDescription()}"></td>
+    <td th:text="${wish.getUrl()}"></td>
+    <td th:text="${wish.getUserID()}"></td>
+  </tr>
+</table>
+
+</body>
+</html>
+
+</body>
+</html>

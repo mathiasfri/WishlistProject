@@ -1,7 +1,7 @@
-package com.example.wishlistproject.repositories;
+package com.example.wishlistproject.Repository;
 
-import com.example.wishlistproject.models.User;
-import com.example.wishlistproject.models.Wish;
+import com.example.wishlistproject.Model.User;
+import com.example.wishlistproject.Model.Wish;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 

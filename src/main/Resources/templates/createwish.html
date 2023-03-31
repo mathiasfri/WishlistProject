@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/addstyle.css}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Create Wish</title>
+</head>
+<body>
+
+<h1>Create Wish</h1>
+<form method="post" action="/createwish">
+    <label for="title">First Name:</label>
+    <input type="text" id="title" name="title">
+    <label for="picture">Last Name:</label>
+    <input type="text" id="picture" name="picture">
+    <label for="description">Email:</label>
+    <input type="text" id="description" name="description">
+    <label for="url">Password:</label>
+    <input type="text" id="url" name="url">
+
+    <button type="submit" formaction="addwish">Create Wish</button>
+
+
+</form>
+
+</body>
+</html>

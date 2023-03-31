@@ -1,8 +1,8 @@
-package com.example.wishlistproject.controllers;
+package com.example.wishlistproject.Controller;
 
-import com.example.wishlistproject.models.User;
-import com.example.wishlistproject.models.Wish;
-import com.example.wishlistproject.repositories.WishRepository;
+import com.example.wishlistproject.Model.User;
+import com.example.wishlistproject.Model.Wish;
+import com.example.wishlistproject.Repository.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,29 +16,29 @@ public class WishController {
     public WishController(WishRepository repository) {
         this.repository = repository;
     }
-    @GetMapping("/create")
+    @GetMapping("/createuser")
     public String createUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "createUser";
+        return "createuser";
 
     }
-    @PostMapping("/addUser")
+    @PostMapping("/adduser")
     public String addUser(@ModelAttribute User user) {
         repository.createUser(user);
-        return "";
+        return "redirect:/";
     }
 
     @GetMapping("/createwish")
     public String createWish(Model model) {
         Wish wish = new Wish();
         model.addAttribute("wish", wish);
-        return "";
+        return "createwish";
     }
     @PostMapping("/addwish")
     public String addWish(@ModelAttribute Wish wish) {
         repository.createWish(wish);
-        return "";
+        return "redirect:/";
     }
 }
 

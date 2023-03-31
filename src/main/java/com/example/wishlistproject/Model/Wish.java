@@ -1,4 +1,7 @@
-package com.example.wishlistproject.models;
+package com.example.wishlistproject.Model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Wish {
     private int wishId;
@@ -7,6 +10,7 @@ public class Wish {
     private String description;
     private String url;
     private int userId;
+    private List<Wish> wishes = new ArrayList<>();
 
     public Wish(){}
     public Wish(int wishId, String title, String picture, String description, String url, int userId) {
@@ -15,6 +19,22 @@ public class Wish {
         this.picture = picture;
         this.description = description;
         this.url = url;
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public List<Wish> getWishes() {
+        return wishes;
+    }
+
+    public void setWishes(List<Wish> wishes) {
+        this.wishes = wishes;
+    }
+
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
