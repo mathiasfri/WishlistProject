@@ -22,7 +22,7 @@ public class WishController {
     public String createUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "createuser";
+        return "cuser";
 
     }
     @PostMapping("/adduser")
@@ -35,7 +35,7 @@ public class WishController {
     public String createWish(Model model) {
         Wish wish = new Wish();
         model.addAttribute("wish", wish);
-        return "createwish";
+        return "cwish";
     }
 
     @PostMapping("/addwish")
@@ -51,6 +51,7 @@ public class WishController {
         model.addAttribute("wishes", wishes);
         return "wishlist";
     }
+
 
 }
 

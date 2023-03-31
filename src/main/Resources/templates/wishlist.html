@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <link th:href="@{/addstyle.css}" rel="stylesheet">
+  <link th:href="@{/wishliststyle.css}" rel="stylesheet">
   <meta charset="UTF-8">
   <title>Create Wish</title>
 </head>
@@ -19,7 +19,7 @@
     <th>User ID</th>
   </tr>
   <tr th:each="wish : ${wishes}">
-    <td th:text="${wish.wishId()}"></td>
+    <td th:text="${wish.wishId}"></td>
     <td th:text="${wish.getTitle()}"></td>
     <td th:text="${wish.getPicture()}"></td>
     <td th:text="${wish.getDescription()}"></td>
@@ -27,9 +27,6 @@
     <td th:text="${wish.getUserID()}"></td>
   </tr>
 </table>
-
-</body>
-</html>
 
 </body>
 </html>
