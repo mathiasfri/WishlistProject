@@ -16,7 +16,7 @@ public class WishRepository {
     String url;
     @Value("${spring.datasource.username}")
     String user_id;
-    @Value("${spring.datasource.password")
+    @Value("${spring.datasource.password}")
     String user_pwd;
 
 

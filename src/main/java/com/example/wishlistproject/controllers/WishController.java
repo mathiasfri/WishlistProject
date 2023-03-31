@@ -29,13 +29,13 @@ public class WishController {
         return "";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/createwish")
     public String createWish(Model model) {
         Wish wish = new Wish();
         model.addAttribute("wish", wish);
         return "";
     }
-    @PostMapping("/addUser")
+    @PostMapping("/addwish")
     public String addWish(@ModelAttribute Wish wish) {
         repository.createWish(wish);
         return "";
