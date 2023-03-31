@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class WishController {
     WishRepository repository;
@@ -35,10 +37,20 @@ public class WishController {
         model.addAttribute("wish", wish);
         return "createwish";
     }
+
     @PostMapping("/addwish")
     public String addWish(@ModelAttribute Wish wish) {
         repository.createWish(wish);
         return "redirect:/";
     }
+
+    @PostMapping("/createwish")
+    public String createWish(@ModelAttribute Wish wish, Model model) {
+        repository.createWish(wish);
+        List<Wish> wishes = repository.createWish(wish);
+        model.addAttribute("wishes", wishes);
+        return "wishlist";
+    }
+
 }
 

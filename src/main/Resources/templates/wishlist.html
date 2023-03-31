@@ -19,7 +19,7 @@
     <th>User ID</th>
   </tr>
   <tr th:each="wish : ${wishes}">
-    <td th:text="${wish.getWishId()}"></td>
+    <td th:text="${wish.wishId()}"></td>
     <td th:text="${wish.getTitle()}"></td>
     <td th:text="${wish.getPicture()}"></td>
     <td th:text="${wish.getDescription()}"></td>
