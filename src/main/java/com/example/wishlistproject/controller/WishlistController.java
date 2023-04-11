@@ -3,23 +3,21 @@ package com.example.wishlistproject.controller;
 import com.example.wishlistproject.model.User;
 import com.example.wishlistproject.model.Wish;
 import com.example.wishlistproject.repository.WishlistRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/wishlist")
+@RequestMapping("wishlist")
 @Controller
 public class WishlistController {
     private WishlistRepository wishlistRepository;
     public WishlistController(WishlistRepository wishlistRepository){
         this.wishlistRepository = wishlistRepository;
     }
-    @GetMapping()
-    public String landingPage(){
-        return "index";
-    }
+
 
     @GetMapping("/create")
     public String createUser(Model model){
@@ -47,7 +45,7 @@ public class WishlistController {
         model.addAttribute("firstName", user.getFirstName());
         model.addAttribute("lastName", user.getLastName());
 
-        List<Wish> wishList = wishlistRepository.getWishList(uid);
+        List<Wish> wishList = wishlistRepository.getWishList((uid));
         model.addAttribute("wishlist", wishList);
         return "main-page";
     }

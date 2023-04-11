@@ -40,18 +40,20 @@ public class WishlistRepository {
         return userId;
     }
 
-    public User getUser(int id){
+    public User getUser(int uid){
         User user = new User();
         try (Connection con = DriverManager.getConnection(url, user_id, user_pwd)) {
             String SQL = "SELECT * FROM users WHERE user_id = ?";
             PreparedStatement pstmt = con.prepareStatement(SQL);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1, uid);
             ResultSet rs = pstmt.executeQuery();
 
             if(rs.next()){
                 user.setUserId(rs.getInt("user_id"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("user_email"));
+                user.setPassword(rs.getString("user_password"));
             }
 
             return user;
@@ -59,7 +61,9 @@ public class WishlistRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
+
 
     public void createWish(Wish newWish){
         try(Connection con = DriverManager.getConnection(url,user_id,user_pwd)) {
