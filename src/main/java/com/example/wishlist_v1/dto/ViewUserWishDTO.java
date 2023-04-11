@@ -1,6 +1,6 @@
-package com.example.wishlistproject.dto;
+package com.example.wishlist_v1.dto;
 
-import com.example.wishlistproject.models.Wish;
+import com.example.wishlist_v1.model.Wish;
 
 import java.util.List;
 
