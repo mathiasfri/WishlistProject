@@ -1,4 +1,4 @@
-package com.example.wishlistproject;
+package repository;
 
 public class WishlistRepository {
 }

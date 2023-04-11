@@ -1,4 +1,4 @@
-package com.example.wishlistproject;
+package controller;
 
 public class WishlistController {
 }
