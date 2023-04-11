@@ -8,13 +8,13 @@
 <body>
 <h1>Login</h1>
 <form action="/wishlist/login" method="post">
-  <p th:if="${wrongCredentials}" class="error">Forkert brugerid eller password</p>
+  <p th:if="${wrongCredentials}" class="error">Wrong email or password!</p>
 
   <p><label>UserId:</label>
-    <input name="uid" type="text" autofocus></p>
+    <input name="uid" type="email" autofocus required></p>
 
   <p><label>Password:</label>
-    <input name="pw" type="password"></p>
+    <input name="pw" type="password" required></p>
   <p>
     <button type="submit">Login</button>
     <a th:href="@{'/'}"><button type="button">Fortryd</button></a>
