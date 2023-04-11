@@ -1,5 +1,6 @@
 package com.example.wishlistproject.controller;
 
+import com.example.wishlistproject.dto.UserWishlistDTO;
 import com.example.wishlistproject.model.User;
 import com.example.wishlistproject.model.Wish;
 import com.example.wishlistproject.repository.WishlistRepository;
@@ -41,14 +42,8 @@ public class WishlistController {
 
     @GetMapping("/mainpage/{uid}")
     public String mainPage(@PathVariable int uid, Model model){
-        User user = wishlistRepository.getUser(uid);
-
-        model.addAttribute("userId", user.getUserId());
-        model.addAttribute("firstName", user.getFirstName());
-        model.addAttribute("lastName", user.getLastName());
-
-        List<Wish> wishList = wishlistRepository.getWishList(uid);
-        model.addAttribute("wishlist", wishList);
+        UserWishlistDTO userWishListDTO = wishlistRepository.getUserAndWishes(uid);
+        model.addAttribute("userWishes", userWishListDTO);
         return "main-page";
     }
 
