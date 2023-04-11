@@ -52,4 +52,36 @@ public class WishlistController {
         return "main-page";
     }
 
+    @GetMapping("/createwish/{uid}")
+    public String createWish(@PathVariable int uid, Model model){
+        Wish newWish = new Wish();
+        newWish.setUserId(uid);
+        model.addAttribute("newWish", newWish);
+        return "create-wish";
+    }
+
+    @PostMapping("/addwish")
+    public String addWish(@ModelAttribute Wish newWish){
+        wishlistRepository.createWish(newWish);
+        return "redirect:/wishlist/mainpage/" + newWish.getUserId();
+    }
+
+    @GetMapping("/updatewish/{wid}")
+    public String updateWish(@PathVariable int wid, Model model){
+        Wish updateWish = wishlistRepository.getSpecificWish(wid);
+        model.addAttribute("updateWish", updateWish);
+        return"update-wish";
+    }
+
+    @PostMapping("/updatewish")
+    public String updateUserWish(@ModelAttribute Wish wishUpdate){
+        wishlistRepository.updateWish(wishUpdate);
+        return "redirect:/wishlist/mainpage/" + wishUpdate.getUserId();
+    }
+
+    @GetMapping("/deletewish/{uid}/{wid}")
+    public String deleteWish(@PathVariable int uid, @PathVariable int wid){
+        wishlistRepository.deleteWish(wid);
+        return "redirect:/wishlist/mainpage/" + uid;
+    }
 }
