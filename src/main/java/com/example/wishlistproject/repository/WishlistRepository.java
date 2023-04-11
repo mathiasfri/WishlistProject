@@ -1,10 +1,14 @@
 package com.example.wishlistproject.repository;
 
 import com.example.wishlistproject.model.User;
+import com.example.wishlistproject.model.Wish;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class WishlistRepository {
     @Value("${spring.datasource.url}")
@@ -34,5 +38,66 @@ public class WishlistRepository {
             throw new RuntimeException(e);
         }
         return userId;
+    }
+
+    public User getUser(int id){
+        User user = new User();
+        try (Connection con = DriverManager.getConnection(url, user_id, user_pwd)) {
+            String SQL = "SELECT * FROM users WHERE user_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.setInt(1,id);
+            ResultSet rs = pstmt.executeQuery();
+
+            if(rs.next()){
+                user.setUserId(rs.getInt("user_id"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+            }
+
+            return user;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void createWish(Wish newWish){
+        try(Connection con = DriverManager.getConnection(url,user_id,user_pwd)) {
+            String SQL = "INSERT INTO wishlist(wish_title, wish_description, wish_url, user_id) VALUES(?, ?, ?, ?)";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.setString(1,newWish.getTitle());
+            pstmt.setString(2,newWish.getDescription());
+            pstmt.setString(3,newWish.getUrl());;
+            pstmt.setInt(4,newWish.getUserId());
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Wish> getWishList(int usersId){
+        List<Wish> wishList = new ArrayList<>();
+        try(Connection con = DriverManager.getConnection(url,user_id,user_pwd)) {
+            String SQL = "SELECT * FROM wishlist WHERE user_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.setInt(1, usersId);
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next()){
+                int wishId = rs.getInt("wish_id");
+                String title = rs.getString("wish_title");
+                String description = rs.getString("wish_description");
+                String url = rs.getString("wish_url");
+                int id = rs.getInt("user_id");
+
+                wishList.add(new Wish(wishId,title,description,url,id));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return wishList;
     }
 }
