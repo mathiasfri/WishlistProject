@@ -33,7 +33,6 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@RequestParam("uid") String email, @RequestParam("pw") String pw, HttpSession
             session, Model model) {
-        // find user in repo - return admin1 if success
         User user = loginRepository.checkEmail(email);
         if (user != null)
             if (user.getPassword().equals(pw)) {
