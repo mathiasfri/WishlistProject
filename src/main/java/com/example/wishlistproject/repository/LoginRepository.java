@@ -25,9 +25,6 @@ public class LoginRepository {
 
             if(rs.next()){
                 user.setUserId(rs.getInt("user_id"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
-                user.setEmail(rs.getString("user_email"));
                 user.setPassword(rs.getString("user_password"));
             }
 
