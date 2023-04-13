@@ -1,0 +1,133 @@
+body {
+    font-family: "Bell MT";
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    background-color: #f5f8fa;
+    margin: 0;
+}
+
+a {
+    color: #0077c2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.th-link {
+    padding: 10px 0;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    background-color: #0077c2;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: #fff;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #0077c2;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+th {
+    text-align: left;
+    color: #0077c2;
+}
+
+tr:nth-child(even) {
+    background-color: #f5f8fa;
+}
+
+footer {
+    background-color: #0077c2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+td a {
+    margin-right: 10px;
+}
+
+td a:last-child {
+    margin-right: 0;
+}
+
+a {
+    margin-bottom: 10px;
+    color: #0077c2;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+a.th-link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #0077c2;
+    text-decoration: none;
+}
+
+a.update-link {
+    margin-right: 20px;
+}
+
+a.delete-link {
+    margin-right: 20px;
+}
+
+a.add-wish {
+    display: inline-block;
+    background-color: #0077c2;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+}

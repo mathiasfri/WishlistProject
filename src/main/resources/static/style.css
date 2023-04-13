@@ -1,27 +1,78 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    background-color: #f2f2f2;
 }
-.icon-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 25px;
-    height: 25px;
-    background-color: transparent;
-    font-size: 2em;
+
+.h1style {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom-left-radius: 15px;
-    cursor: pointer;
-    z-index: 1;
+    margin-top: 5rem;
+    font-family: "Bell MT";
+    color: #0077c2;
+    font-size: xx-large;
 }
-.icon-close a {
+
+.abuttom {
+    flex-direction: row;
+    font-family: "Bell MT";
+    color: #0077c2;
+    font-size: 3rem;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+}
+
+a {
     text-decoration: none;
-    margin-bottom: 10px;
-    margin-left: 8px;
-    color: dimgray;
-    font-size: 20px;
+    color: #0077c2;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem 2rem;
+    border: 2px solid #0077c2;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    background-color: #0077c2;
+    color: #fff;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0 1rem;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+i.fa-smile {
+    margin-right: 10rem;
+    font-size: 5rem;
+    color: #0077c2;
+    animation: spin 2s linear infinite;
+    transform-origin: right ;
+}
+
+i.fa-hand-holding-heart {
+    margin-left: 10rem;
+    font-size: 5rem;
+    color: #0077c2;
+    animation: spin-reverse 2s linear infinite;
+    transform-origin: left;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0); }
 }

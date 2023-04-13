@@ -3,65 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Your WishList</title>
+    <link rel="stylesheet" th:href="@{/mainstyle.css}">
 </head>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-<link th:href="@{/style.css}" href="/style.css" rel="stylesheet" type="text/css" />
-
 <body>
-<h1 th:text="'Welcome ' + ${firstName} +' ' + ${lastName} + ' to your personal wishlist'"></h1>
-<a href="@{}">Update your info</a>
-<a href="@{}">Delete your account</a>
-<br/>
-<br>
-<a th:href="@{'/wishlist/createwish/' + ${userId}}">Add wish</a>
-<br>
-<br>
 
-<!--can be used for layout -->
-<div class="row row-cols-1 row-cols-md-5 g-4">
-    <div class="col" th:each="wl : ${wishlist}">
-        <div class="card h-100">
-            <div>
-                <span class="icon-close">
-                    <a th:href="@{'/wishlist/deletewish/'+ ${wl.getUserId()} + '/' + ${wl.getWishId()}}">x</a>
-                </span>
-            </div>
-            <img src="https://play-lh.googleusercontent.com/jbc0ioconaE4oC5T7SKwYPzWd0nxZRBU9RKD4CHivPwlIL7ExBJXc_x7zvpakO1ne-A=w480-h960-rw" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title" th:text="${wl.getTitle()}"></h5>
-                <p class="card-text" th:text="${wl.getDescription()}"></p>
-            </div>
-            <div class="card-footer">
-                <small class="text-body-secondary">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a th:href="${wl.getUrl()}" target="_blank" class="btn btn-light btn-sm">Visit website</a>
-                        <a th:href="@{'/wishlist/updatewish/'+ ${wl.getWishId()}}" class="btn btn-light btn-sm">Update wish</a>
-                    </div>
-                </small>
-            </div>
-        </div>
-    </div>
-</div>
-<br><br>
+<main>
+    <h1 th:text="'Welcome ' + ${firstName} +' ' + ${lastName} + ' to your personal Wishlist'"></h1>
 
-<tr th:if="${wishlist.isEmpty()}">
-    <p>No wishes made... Add a wish!</p>
-</tr>
-<tr th:unless="${wishlist.isEmpty()}" th:each="wl : ${wishlist}">
-    <td th:text="${wl.getTitle()}"></td>
+    <a href="@{}">Update your info</a>
+    <a href="@{}">Delete your account</a>
+
     <br>
-    <td th:text="${wl.getDescription()}"></td>
+    <a th:href="@{'/wishlist/createwish/' + ${userId}}">Add wish</a>
     <br>
-    <div>
-        <a th:href="${wl.getUrl()}"> Visit website</a>
-    </div>
-    <td th:text="${wl.getUrl()}" ></td>
-    <br>
-    <a th:href="@{'/wishlist/updatewish/'+ ${wl.getWishId()}}">Update wish</a>
-    <a th:href="@{'/wishlist/deletewish/'+ ${wl.getUserId()} + '/' + ${wl.getWishId()}}">Delete wish</a>
-    <a th:href="@{'/wishlist/login'}"><button type="button">Logout</button></a>
-    <br><br>
-</tr>
+
+    <table>
+        <tr th:if="${wishlist.isEmpty()}">
+            <td colspan="3">No wishes made... Add a wish!</td>
+        </tr>
+        <tr th:unless="${wishlist.isEmpty()}" th:each="wl : ${wishlist}">
+            <td th:text="${wl.getTitle()}"></td>
+            <td th:text="${wl.getDescription()}"></td>
+            <td>
+                <a th:href="${wl.getUrl()}">Visit website</a>
+                <a th:href="@{'/wishlist/updatewish/'+ ${wl.getWishId()}}">Update wish</a>
+                <a th:href="@{'/wishlist/deletewish/'+ ${wl.getUserId()} + '/' + ${wl.getWishId()} }">Delete wish</a>
+            </td>
+        </tr>
+    </table>
+</main>
+
+<footer>
+    <p>Wishlist © Your Company
+</footer>
+
 </body>
 </html>

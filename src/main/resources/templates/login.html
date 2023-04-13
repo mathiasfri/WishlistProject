@@ -1,24 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sessions</title>
-  <link rel="stylesheet" th:href="@{/main.css}">
+  <title>Login</title>
+  <link rel="stylesheet" href="/loginstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
-<h1>Login</h1>
-<form action="/wishlist/login" method="post">
-  <p th:if="${wrongCredentials}" class="error">Forkert brugerid eller password</p>
-
-  <p><label>Email:</label>
-    <input name="uid" type="text" autofocus></p>
-
-  <p><label>Password:</label>
-    <input name="pw" type="password"></p>
-  <p>
+<div class="container">
+  <h1>Login</h1>
+  <form action="/wishlist/login" method="post">
+    <p class="error" th:if="${wrongCredentials}">Wrong username or password</p>
+    <div class="input-wrapper">
+      <label for="email">Email:</label>
+      <input id="email" type="text" name="uid" autofocus>
+    </div>
+    <div class="input-wrapper">
+      <label for="password">Password:</label>
+      <div class="password-wrapper">
+        <input id="password" type="password" name="pw" oninput="convertPasswordToIcon(this)">
+        <div class="icon-wrapper">
+          <i class="fas fa-eye-slash" data-fa-transform="rotate-180" onclick="togglePasswordVisibility(this)"></i>
+        </div>
+      </div>
+    </div>
     <button type="submit">Login</button>
-    <a th:href="@{'/'}"><button type="button">Fortryd</button></a>
-  </p>
-</form>
+    <a href="/" class="cancel-button"><button type="button">Cancel</button></a>
+  </form>
+</div>
+<script>
+  function convertPasswordToIcon(input) {
+    var icon = input.nextElementSibling.querySelector('i');
+    if (input.value.length > 0) {
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    } else {
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    }
+  }
+
+  function togglePasswordVisibility(icon) {
+    var input = icon.parentElement.parentElement.querySelector('input');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+    } else {
+      input.type = 'password';
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+    }
+  }
+</script>
 </body>
 </html>
