@@ -14,9 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
     private LoginRepository loginRepository;
+    private int current_userId;
 
     public LoginController(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
+    }
+
+
+    protected boolean isLoggedIn(HttpSession session, int uid) {
+        return session.getAttribute("user") != null && current_userId == uid;
     }
 
     @GetMapping()
@@ -31,16 +37,23 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("uid") String email, @RequestParam("pw") String pw, HttpSession
-            session, Model model) {
-        User user = loginRepository.checkEmail(email);
-        if (user != null)
-            if (user.getPassword().equals(pw)) {
-                // create session for user and set session timeout to 30 sec (container default: 15 min)
-                session.setAttribute("user", user);
-                session.setMaxInactiveInterval(30);
-                return "redirect:/wishlist/mainpage/" + user.getUserId();
-            }
+    public String login(@RequestParam("uid") String uid, @RequestParam("pw") String pw, HttpSession session, Model model) {
+        User user = loginRepository.checkEmail(uid);
+        if (user != null && user.getPassword().equals(pw)) {
+            // create session for user and set session timeout to 30 sec (container default: 15 min)
+            session.setAttribute("user", user);
+            current_userId = user.getUserId();
+            //session.setAttribute("user_id", user.getUserId());
+            session.setMaxInactiveInterval(30);
+
+/*            int id = (Integer) session.getAttribute("user_id");
+            if (user.getUserId() != id)  {
+                return "login";
+            }*/
+
+            return "redirect:/wishlist/mainpage/" + current_userId;
+        }
+
         // wrong credentials
         model.addAttribute("wrongCredentials", true);
         return "login";

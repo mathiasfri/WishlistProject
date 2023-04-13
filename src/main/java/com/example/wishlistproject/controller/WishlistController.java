@@ -14,8 +14,11 @@ import java.util.List;
 @Controller
 public class WishlistController {
     private WishlistRepository wishlistRepository;
-    public WishlistController(WishlistRepository wishlistRepository){
+    private LoginController loginController;
+
+    public WishlistController(WishlistRepository wishlistRepository, LoginController loginController){
         this.wishlistRepository = wishlistRepository;
+        this.loginController = loginController;
     }
 
 
@@ -38,7 +41,7 @@ public class WishlistController {
     }
 
     @GetMapping("/mainpage/{uid}")
-    public String mainPage(@PathVariable int uid, Model model){
+    public String mainPage(@PathVariable int uid, Model model, HttpSession session){
         User user = wishlistRepository.getUser(uid);
 
         model.addAttribute("userId", user.getUserId());
@@ -47,7 +50,14 @@ public class WishlistController {
 
         List<Wish> wishList = wishlistRepository.getWishList((uid));
         model.addAttribute("wishlist", wishList);
-        return "main-page";
+       /*  if (loginController.isLoggedIn(session, uid) == true) {
+            return "landingpage";
+
+        }
+         else return "login"; */
+
+        return
+                loginController.isLoggedIn(session, uid) ? "main-page" : "login";
     }
 
     @GetMapping("/createwish/{uid}")
