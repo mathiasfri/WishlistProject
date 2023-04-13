@@ -50,14 +50,8 @@ public class WishlistController {
 
         List<Wish> wishList = wishlistRepository.getWishList((uid));
         model.addAttribute("wishlist", wishList);
-       /*  if (loginController.isLoggedIn(session, uid) == true) {
-            return "landingpage";
 
-        }
-         else return "login"; */
-
-        return
-                loginController.isLoggedIn(session, uid) ? "main-page" : "login";
+        return loginController.isLoggedIn(session, uid) ? "main-page" : "login";
     }
 
     @GetMapping("/createwish/{uid}")

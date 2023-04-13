@@ -43,13 +43,8 @@ public class LoginController {
             // create session for user and set session timeout to 30 sec (container default: 15 min)
             session.setAttribute("user", user);
             current_userId = user.getUserId();
-            //session.setAttribute("user_id", user.getUserId());
-            session.setMaxInactiveInterval(30);
 
-/*            int id = (Integer) session.getAttribute("user_id");
-            if (user.getUserId() != id)  {
-                return "login";
-            }*/
+            session.setMaxInactiveInterval(30);
 
             return "redirect:/wishlist/mainpage/" + current_userId;
         }
