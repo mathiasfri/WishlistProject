@@ -35,6 +35,33 @@ The purpose of the project is to enhance your skills within some of the subject 
 ```
 
 <br>
+<br>
+
+### Classes and Setup
+
+Sign-up:
+When signing up it's requirede to enter; first name, last name, email and password.
+
+These information will be taken by the class **wishlistController** where createUser methode will create a new instance of a user and send it to the html-page "create-user"
+
+```java
+    @GetMapping("/create")
+    public String createUser(Model model){
+        User newUser = new User();
+        model.addAttribute("newUser", newUser);
+        return "create-user";
+    }
+```
+
+After the instance has been filled with the users informations the methode:
+
+```java
+    @PostMapping("/adduser")
+    public String addUser(@ModelAttribute User newUser, Model model){
+        int userId = wishlistRepository.createUser(newUser);
+        return "created-user";
+    }
+```
 
 ## Class Diagram Wishlist project
 <br>
