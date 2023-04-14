@@ -11,42 +11,19 @@ The purpose of the project is to enhance your skills within some of the subject 
 <br>
 
 ```mermaid
-    erDiagram
-        NEW-USER ||--o| USERS : creates-account
-
-        USERS ||--o{ WISHLIST : user-create-wish
-        
-        USERS {
-            int user_id PK
-            String first_name
-            String last_name
-            String email
-            String password
-            int wish_id FK
-        }
-
-        WISHLIST {
-            int wish_id PK
-            String wish_titel
-            String wish_description
-            String wish_url
-            Blob wish_picture
-            int user_id FK
-        }
-```
-
-<br>
-
-## Class Diagram Wishlist project
-
-<br>
-
-```mermaid
     classDiagram
-        WishlistController --|> WishlistRepository
-        WishlistController <|-- WishlistRepository
-        Wish <|--User
+        WishlistController "1..*" o--> "1" WishlistRepository
+        LoginRepository "1" <--o "1" LoginController
+        WishlistController "1" o--> "1" LoginController
+        Wish "1" <.. "0..*" User
+        User "1..*" <.. "1" WishlistRepository
+        Wish "1..*"..> WishlistRepository
+        WishlistController "1" ..> "0..*" Wish
+        LoginRepository .. WishlistRepository
         
+        
+        
+
         class User{
             +userId: int
             +firstName: String
@@ -112,5 +89,26 @@ The purpose of the project is to enhance your skills within some of the subject 
             +deletetWish()
         }
 
+        
+           class LoginController{
+            +repository: LoginRepository
+            +current_user: int
+
+            +isLoggedIn()
+            +landingPage()
+            +showLogin()
+            +login()
+            +logout()
+        }
+
+         class LoginRepository{
+            +url: String
+            +user_id: String
+            +user_pwd: String
+
+            +checkEmail()
+        }
+
+      
 
 ``` 
