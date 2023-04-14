@@ -40,8 +40,6 @@ The purpose of the project is to enhance your skills within some of the subject 
 <br>
 
 
-## ER-Diagram Wishlist project
-
 <br>
 
 ```mermaid
