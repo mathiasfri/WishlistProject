@@ -62,18 +62,12 @@ button[type="reset"]:focus {
 }
 
 form {
-    background-color: #0077c2;
-    color: #fff;
+    background-color: #fff ;
+    color: #0077c2;
     text-align: center;
 }
 
-label > input[type="text"],
-label > textarea {
-    color: #fff;
-    background-color: #1c5d99;
-    border: none;
-    font-size: 1.2em;
-}
+
 
 button[type="submit"],
 button[type="reset"] {
