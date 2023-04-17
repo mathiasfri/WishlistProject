@@ -18,7 +18,7 @@ public class LoginRepository {
     public User checkEmail(String email){
         User user = new User();
         try (Connection con = DriverManager.getConnection(url, user_id, user_pwd)) {
-            String SQL = "SELECT * FROM users WHERE user_email = ?";
+            String SQL = "SELECT * FROM users WHERE user_email = ?;";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             pstmt.setString(1,email);
             ResultSet rs = pstmt.executeQuery();
