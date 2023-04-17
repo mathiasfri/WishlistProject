@@ -32,3 +32,6 @@ CREATE TABLE wishlist
     PRIMARY KEY (wish_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
+
+INSERT INTO users (first_name, last_name, user_email, user_password)
+VALUES	("Test","Test","test@gmail.com","1234");
