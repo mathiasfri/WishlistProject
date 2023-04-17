@@ -39,7 +39,7 @@ The purpose of the project is to enhance your skills within some of the subject 
 
 ## Tables
 In our project we have 2 tables, that we are working with. A table that includes all information about each individual wish and one that holds all user information. In the snippet below, you can see how the tables have been set up in MySQL.
-```
+```mysql
 CREATE TABLE users
 (
     user_id       INTEGER NOT NULL AUTO_INCREMENT,
