@@ -9,7 +9,6 @@ USE
 wishlist_db;
 
 -- Drop tables if they exist
-DROP TABLE IF EXISTS userswishlist;
 DROP TABLE IF EXISTS wishlist;
 DROP TABLE IF EXISTS users;
 
