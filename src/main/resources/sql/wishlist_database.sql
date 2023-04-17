@@ -1,12 +1,10 @@
 -- Wishlist database
 
 -- Create database if no one exist
-CREATE
-DATABASE IF NOT EXISTS wishlist_db;
+CREATE DATABASE IF NOT EXISTS wishlist_db;
 
 -- Use databaase
-USE
-wishlist_db;
+USE wishlist_db;
 
 -- Drop tables if they exist
 DROP TABLE IF EXISTS wishlist;
