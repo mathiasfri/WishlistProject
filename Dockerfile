@@ -3,7 +3,7 @@ FROM lakruzz/lamj:latest
 # ENV MYSQL_ROOT_PASSWORD=root
 
 ENV PORT=8080
-ENV MYSQL_PORT=3306
+ENV MYSQL_PORT=3307
 
 COPY src /src
 COPY pom.xml /pom.xml
