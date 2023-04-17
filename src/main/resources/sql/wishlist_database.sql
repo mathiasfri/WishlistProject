@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS users;
 -- Create new tables
 CREATE TABLE users
 (
-    user_id       INTEGER NOT NULL AUTO_INCREMENT,
+    user_id       INTEGER GENERATED ALWAYS AS IDENTITY,
     first_name    VARCHAR(20),
     last_name     VARCHAR(20),
     user_email    VARCHAR(50) UNIQUE,
@@ -23,7 +23,7 @@ CREATE TABLE users
 
 CREATE TABLE wishlist
 (
-    wish_id          INTEGER NOT NULL AUTO_INCREMENT,
+    wish_id          INTEGER GENERATED ALWAYS AS IDENTITY,
     wish_title       VARCHAR(50),
     wish_description VARCHAR(255),
     wish_url         VARCHAR(2083),
