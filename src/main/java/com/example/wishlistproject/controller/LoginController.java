@@ -58,7 +58,7 @@ public class LoginController {
     public String logout(HttpSession session) {
         // invalidate session and return landing page
         session.invalidate();
-        return "redirect:/wishlish/login";
+        return "login";
     }
 }
 
